@@ -17,8 +17,14 @@ namespace projekt1
         public Form1()
         {
             InitializeComponent();
+            logic.beolvasas(content);
+            this.FormClosing += becsukas;
         }
 
+        private void becsukas(object sender, EventArgs e)
+        {
+            logic.kiiratas();
+        }
         private void gomb_Click(object sender, EventArgs e)
         {
             if (input.Text != "")

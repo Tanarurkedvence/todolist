@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
 
 namespace projekt1
 {
@@ -43,6 +44,24 @@ namespace projekt1
             i++;
         }
     }
+    public void kiiratas()
+        {
+            StreamWriter irato = new StreamWriter("data.txt");
+            foreach (var entry in Entries)
+                irato.WriteLine(entry.ToString());
+            irato.Close();
+
+        }
+     public void beolvasas(Panel targetPanel)
+        {
+            StreamReader olvaso = new StreamReader("data.txt");
+            while (!olvaso.EndOfStream)
+            {
+                Entries.Add(olvaso.ReadLine());
+            }
+            showEntries(targetPanel);
+            olvaso.Close();
+        }
 
     private void removeEntry(object sender, EventArgs e)
     {
